@@ -1,0 +1,25 @@
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity('products')
+export class ProductsEntity {
+  @PrimaryGeneratedColumn()
+  id: number; // 标记为主列，值自动生成
+
+  @Column({ length: 50 })
+  title: string;
+
+  @Column('text')
+  desc: string;
+
+  @Column({ default: '' })
+  thumb_url: string;
+
+  @Column('tinyint')
+  type: number;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  create_time: Date;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  update_time: Date;
+}
